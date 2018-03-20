@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`enhanceComponent 1`] = `
+<div>
+  <div>
+    0
+    <button
+      id="button-one"
+      onClick={[Function]}
+    />
+  </div>
+  <div>
+    0
+    <button
+      id="button-two"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
+
+exports[`enhanceComponent 2`] = `
+<div>
+  <div>
+    0
+    <button
+      id="button-one"
+      onClick={[Function]}
+    />
+  </div>
+  <div>
+    1
+    <button
+      id="button-two"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
