@@ -1,7 +1,11 @@
 {
   "name": "aiws-elm",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "An helper for applying Elm architecture with React & Redux",
+  "files": [
+    "dist",
+    "src"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "build": "NODE_ENV=production babel src --out-dir dist",
