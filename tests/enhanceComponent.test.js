@@ -83,3 +83,32 @@ test('enhanceComponent', () => {
     expect(comp.toJSON()).toMatchSnapshot();
 });
 
+test('enhanceComponent with mutiple levels of prefix', () => {
+    const multiLevelState = {
+        First: {
+            Second: {
+                Counter: counterInitialState
+            }
+        }
+    };
+    const multiLevelReducer = enhanceReducer(multiLevelState, {
+        First: enhanceReducer(multiLevelState.First, {
+            Second: enhanceReducer(multiLevelState.First.Second, {
+                Counter: counterReducer
+            })
+        })
+    });
+    const store = createStore(multiLevelReducer, multiLevelState);
+    const EnhancedCounter = enhanceComponent(ConnectedCounter, 'First/Second/Counter');
+    const comp = renderer.create(
+        <Provider store={store}>
+            <EnhancedCounter
+                id="counter"
+            />
+        </Provider>
+    );
+    expect(comp.toJSON()).toMatchSnapshot();
+    comp.root.findByProps({ id: 'button-counter' }).props.onClick();
+    expect(comp.toJSON()).toMatchSnapshot();
+    expect(store.getState().First.Second.Counter.counter).toEqual(1);
+});

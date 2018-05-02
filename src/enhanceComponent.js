@@ -24,7 +24,7 @@ export default (Component, reducerPrefix, actionWrapper, { storeKey = 'store', s
             const dispatch = action => store.dispatch(actionMapping(action));
 
             // convert separator to dot inorder to get its proper state.
-            const getState = () => _.get(store.getState(), _.replace(reducerPrefix, separator, '.'));
+            const getState = () => _.get(store.getState(), _.replace(reducerPrefix, new RegExp(separator, 'g'), '.'));
 
             return {
                 [storeKey]: {

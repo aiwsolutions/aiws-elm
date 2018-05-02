@@ -37,3 +37,23 @@ exports[`enhanceComponent 2`] = `
   </div>
 </div>
 `;
+
+exports[`enhanceComponent with mutiple levels of prefix 1`] = `
+<div>
+  0
+  <button
+    id="button-counter"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`enhanceComponent with mutiple levels of prefix 2`] = `
+<div>
+  1
+  <button
+    id="button-counter"
+    onClick={[Function]}
+  />
+</div>
+`;
