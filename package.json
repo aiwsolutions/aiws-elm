@@ -1,6 +1,6 @@
 {
   "name": "aiws-elm",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "An helper for applying Elm architecture with React & Redux",
   "files": [
     "dist",
