@@ -14,16 +14,17 @@ export default (Component, reducerPrefix, actionWrapper, { storeKey = 'store', s
         getChildContext() {
             const store = this.context[storeKey];
             const actionMapping = _.isFunction(actionWrapper) ? actionWrapper :
-                (action) => ({
+                action => ({
                     ...action,
                     type: _.isNil(actionWrapper) ?
                         `${reducerPrefix}${separator}${action.type}` :
                         `${actionWrapper}${action.type}`
                 });
 
-            const dispatch = (action) => store.dispatch(actionMapping(action));
+            const dispatch = action => store.dispatch(actionMapping(action));
 
-            const getState = () => _.get(store.getState(), reducerPrefix);
+            // convert separator to dot inorder to get its proper state.
+            const getState = () => _.get(store.getState(), _.replace(reducerPrefix, separator, '.'));
 
             return {
                 [storeKey]: {
